@@ -21,6 +21,8 @@ struct WeatherDetail: Codable{
 
 func fetchWeather(lat: Double, lon: Double, completion: @escaping (Result<CurrentWeather, Error>) -> Void) {
    
+    // Zdarov Nazar
+    
     let apiKey = "2b1f203c6ee223c4c4f4a05bb344dac8"
     let urlString = "https://api.openweathermap.org/data/3.0/onecall?lat=\(lat)&lon=\(lon)&units=metric&lang=uk&appid=\(apiKey)"
 
