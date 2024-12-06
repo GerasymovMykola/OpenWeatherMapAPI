@@ -38,6 +38,11 @@ func fetchWeather(lat: Double, lon: Double, completion: @escaping (Result<Curren
         }
 
         if let data = data {
+            
+            if let jsonString = String(data: data, encoding: .utf8) {
+                            print("Response JSON: \(jsonString)")
+            }
+            
             do {
                 let weatherResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
                 completion(.success(weatherResponse.current))
