@@ -66,7 +66,7 @@ struct ContentView: View {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let currentWeather):
-                    self.temperature = String(format: "%.1f", currentWeather.temb)
+                    self.temperature = String(format: "%.1f", currentWeather.main.temp)
                     self.weatherDisription = currentWeather.weather.first?.description ?? "N/A"
                     self.region.center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
                 case .failure(let error):
