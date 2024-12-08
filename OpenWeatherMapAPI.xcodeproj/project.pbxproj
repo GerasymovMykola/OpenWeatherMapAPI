@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0D0E3C2D04C00E000D3F4E /* WeatherDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D0E3B2D04C00E000D3F4E /* WeatherDetailsView.swift */; };
 		CFE8F5042D01159400D0BCF2 /* OpenWeatherMapAPIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5032D01159400D0BCF2 /* OpenWeatherMapAPIApp.swift */; };
 		CFE8F5062D01159400D0BCF2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5052D01159400D0BCF2 /* ContentView.swift */; };
 		CFE8F5082D01159600D0BCF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFE8F5072D01159600D0BCF2 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF0D0E3B2D04C00E000D3F4E /* WeatherDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsView.swift; sourceTree = "<group>"; };
 		CFE8F5002D01159400D0BCF2 /* OpenWeatherMapAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenWeatherMapAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE8F5032D01159400D0BCF2 /* OpenWeatherMapAPIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapAPIApp.swift; sourceTree = "<group>"; };
 		CFE8F5052D01159400D0BCF2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				CFE8F5032D01159400D0BCF2 /* OpenWeatherMapAPIApp.swift */,
 				CFE8F5052D01159400D0BCF2 /* ContentView.swift */,
+				CF0D0E3B2D04C00E000D3F4E /* WeatherDetailsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0D0E3C2D04C00E000D3F4E /* WeatherDetailsView.swift in Sources */,
 				CFE8F5122D0115DE00D0BCF2 /* MainAPI.swift in Sources */,
 				CFE8F5062D01159400D0BCF2 /* ContentView.swift in Sources */,
 				CFE8F5042D01159400D0BCF2 /* OpenWeatherMapAPIApp.swift in Sources */,
