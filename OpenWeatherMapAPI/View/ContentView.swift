@@ -9,14 +9,7 @@ import MapKit
 
 struct ContentView: View {
     
-    @State private var latitude: String = "44.65"
-    @State private var longitude: String = "-63.57"
-    @State private var temperature: String = "-"
-    @State private var weatherDisription: String = "-"
-    
-    @State private var isLoading: Bool = false
-    @State private var showDetails: Bool = false
-    @State private var apiError: String? = nil
+    @ObservedObject private var viewModel = WeatherViewModel()
     
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 44.65, longitude: -63.57),
@@ -33,43 +26,29 @@ struct ContentView: View {
                     
                     HStack {
                         Text("Latitude:")
-                        TextField("Enter Latitude", text: $latitude)
+                        TextField("Enter Latitude", text: $viewModel.latitude)
                             .keyboardType(.decimalPad)
                     }
                     
                     HStack {
                         Text("Longitude:")
-                        TextField("Enter Longitude", text: $longitude)
+                        TextField("Enter Longitude", text: $viewModel.longitude)
                             .keyboardType(.decimalPad)
                     }
                 }.padding()
                 
-                /*
-                 Button("Get weather"){
-                 getWeather()
-                 }
-                 .buttonStyle(.borderedProminent)
-                 
-                 VStack{
-                 Text("Temperature \(temperature) C")
-                 Text("Discription \(weatherDisription)")
-                 }
-                 .font(.headline)
-                 */
-                
                 Map(coordinateRegion: $region).frame(height: 300)
                 
-                
                 NavigationLink(destination: WeatherDetailsView(
-                    temperature: temperature,
-                    weatherDescription: weatherDisription,
-                    latitude: latitude,
-                    longitude: longitude
-                ), isActive: $showDetails) {
+                    temperature: viewModel.temperature,
+                    weatherDescription: viewModel.weatherDisription,
+                    latitude: viewModel.latitude,
+                    longitude: viewModel.longitude
+                ), isActive: $viewModel.showDetails) {
                     Button(action: {
-                        getWeather()
+                        viewModel.getWeather()
                     }) {
-                        if isLoading {
+                        if viewModel.isLoading {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle())
                         } else {
@@ -80,12 +59,12 @@ struct ContentView: View {
                                 .cornerRadius(10)
                         }
                     }
-                    .disabled(isLoading)
+                    .disabled(viewModel.isLoading)
                     
                 }
                 .padding()
                 
-                if let error = apiError {
+                if let error = viewModel.apiError {
                     Text("Error: \(error)")
                         .foregroundColor(.red)
                         .padding()
@@ -95,31 +74,6 @@ struct ContentView: View {
         }
     }
     
-    func getWeather() {
-        
-        guard let lat = Double(latitude), let lon = Double(longitude) else {
-            print("Invalid coordinates")
-            return
-        }
-        
-        isLoading = true
-        apiError = nil
-        
-        fetchWeather(lat: lat, lon: lon) { result in
-            DispatchQueue.main.async {
-                isLoading = false
-                switch result {
-                case .success(let currentWeather):
-                    self.temperature = String(format: "%.1f", currentWeather.main.temp)
-                    self.weatherDisription = currentWeather.weather.first?.description ?? "N/A"
-                    self.region.center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                    self.showDetails = true
-                case .failure(let error):
-                    self.apiError = "Failed to fetch weather: \(error.localizedDescription)"
-                }
-            }
-        }
-    }
 }
 
 #Preview {
