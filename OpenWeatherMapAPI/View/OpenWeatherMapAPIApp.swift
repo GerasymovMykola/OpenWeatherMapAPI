@@ -1,9 +1,6 @@
 //
 //  OpenWeatherMapAPIApp.swift
 //  OpenWeatherMapAPI
-//
-//  Created by Maryna Bosko on 2024-12-04.
-//
 
 import SwiftUI
 
